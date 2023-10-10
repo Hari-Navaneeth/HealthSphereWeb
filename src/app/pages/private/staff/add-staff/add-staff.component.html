@@ -1,0 +1,30 @@
+<div class="card">
+    <p-toolbar styleClass="m-3 mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <div class="text-2xl font-semibold vertical-align-middle">
+                Add Staff
+            </div>
+        </ng-template>
+
+    </p-toolbar>
+    <div class="flex flex-wrap">
+        <div *ngFor="let field of formControls1" class="field col-12 md:col-4 py-2">
+            <app-common-input [property]="field" [(value)]="formModel[field.id]"
+                (valueChange)="updateModel($event,field)"></app-common-input>
+        </div>
+        <div class="field col-12 md:col-8 py-2">
+            <app-common-input [property]="addressControl" [(value)]="formModel[addressControl.id]"
+                (valueChange)="updateModel($event,addressControl)"></app-common-input>
+        </div>
+        <div *ngFor="let field of formControls2" class="field col-12 md:col-4 py-2">
+            <app-common-input [property]="field" [(value)]="formModel[field.id]"
+                (valueChange)="updateModel($event,field)"></app-common-input>
+        </div>
+        <div class="col-12 flex justify-content-between">
+            <button pButton pRipple type="button" label="Back" (click)="back()"
+                class="p-button-outlined p-button-raised p-button-danger" icon="pi pi-arrow-left" iconPos="left"></button>
+            <button pButton pRipple type="button" label="Submit" (click)="submit()" [loading]="loading"
+                class="p-button-outlined p-button-raised p-button-success"></button>
+        </div>
+    </div>
+</div>

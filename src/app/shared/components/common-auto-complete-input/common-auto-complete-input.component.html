@@ -1,0 +1,18 @@
+<span>
+    <span class="p-float-label">
+        <p-autoComplete type="text" inputId="{{ property?.id }}" [suggestions]="suggestions"
+            [delay]="property?.delay" styleClass="w-full" inputStyleClass="w-full" [class.ng-invalid]="property?.invalid"
+            [class.ng-valid]="!property?.invalid" [class.ng-dirty]="property?.invalid" [ngClass]="property?.classNames"
+            [ngStyle]="property?.style" maxlength="{{ property?.maxLength }}" [(ngModel)]="value"
+            (input)="onChange($event)" [disabled]="property?.disabled" (completeMethod)="search($event)"
+            (onBlur)="onBlur($event)"></p-autoComplete>
+
+        <label *ngIf="property?.label" for="{{ property?.id }}" [class.text-red-500]="property?.invalid"
+            [class.font-bold]="property?.invalid">
+            {{ property?.label
+            }}<sup *ngIf="property?.required" class="text-red-500 font-bold">
+                *</sup></label>
+    </span>
+    <small *ngIf="property?.invalid && property?.invalidMessage" id="{{ property?.id }}-help" class="text-red-500">{{
+        property?.invalidMessage }}</small>
+</span>

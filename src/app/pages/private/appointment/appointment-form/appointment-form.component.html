@@ -1,0 +1,5 @@
+<div class="flex flex-wrap col-12 align-content-start">
+    <div *ngFor="let field of patientExtraInformationFields" class="field col-12 md:col-4 py-2">
+        <app-common-input [property]="field" [(value)]="patientInfoModel[field.id]"></app-common-input>
+    </div>
+</div>

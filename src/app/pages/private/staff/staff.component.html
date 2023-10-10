@@ -1,0 +1,26 @@
+<div class="card">
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <div class="text-2xl font-semibold vertical-align-middle">
+                Staff Management
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <div class="flex flex-wrap gap-2">
+                <p-button label="Add Staff" styleClass="p-button-raised" (click)="addStaff()"></p-button>
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="searchQuery" (input)="getStaff()"
+                        placeholder="Search keyword" />
+                </span>
+            </div>
+        </ng-template>
+    </p-toolbar>
+    <div class="col-12 p-0">
+        <app-common-table [value]="tableData.data" [columns]="tableData.columns" [totalRecords]="tableData.count"
+            [loading]="isStaffTableLoading" (onPageChange)="getStaff($event)" (onAction)="onAction($event)"
+            showExportButtons="true" fileName="Staff">
+        </app-common-table>
+    </div>
+</div>

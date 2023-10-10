@@ -1,0 +1,11 @@
+<div class="flex flex-wrap col-6 md:col-12">
+    <div *ngFor="let item of viewData" class="flex col-12 md:col-6">
+        <div class="col-4 font-bold p-0">
+            {{item.key}}
+        </div>
+        <div class="col-1 text-center p-0">:</div>
+        <div class="col p-0">
+            {{item.value || '-'}}
+        </div>
+    </div>
+</div>

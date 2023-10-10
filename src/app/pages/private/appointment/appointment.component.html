@@ -1,0 +1,21 @@
+<div class="card">
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <div class="text-2xl font-semibold vertical-align-middle">
+                Appointments
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <p-button label="Add" styleClass="p-button-raised" (click)="addAppointment()"></p-button>
+        </ng-template>
+    </p-toolbar>
+
+    <div class="col-12 p-0">
+        <app-common-table [value]="tableData.data" [columns]="tableData.columns" [totalRecords]="tableData.count"
+            [loading]="isAppointmentTableLoading" (onPageChange)="getAppointment($event)" (onAction)="onAction($event)"
+            showExportButtons="true" fileName="Patients">
+        </app-common-table>
+    </div>
+
+</div>

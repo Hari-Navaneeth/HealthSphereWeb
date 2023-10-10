@@ -1,0 +1,25 @@
+<ng-container *ngIf="checkForTextInput();else templateName">
+    <app-common-text-input [property]="property" [(value)]="value"
+        (valueChange)="onChange($event)"></app-common-text-input>
+</ng-container>
+<ng-template #templateName>
+    <ng-container [ngSwitch]="property.inputType">
+        <ng-container *ngSwitchCase="'Date'">
+            <app-common-date-input [property]="property" [(value)]="value"
+                (valueChange)="onChange($event)"></app-common-date-input>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Dropdown'">
+            <app-common-dropdown-input [property]="property" [(value)]="value"
+                (valueChange)="onChange($event)"></app-common-dropdown-input>
+        </ng-container>
+        <ng-container *ngSwitchCase="'TextArea'">
+            <app-common-text-area-input [property]="property" [(value)]="value"
+                (valueChange)="onChange($event)"></app-common-text-area-input>
+        </ng-container>
+        <ng-container *ngSwitchCase="'AutoComplete'">
+            <app-common-auto-complete-input [property]="property" [(value)]="value"
+                (valueChange)="onChange($event)"></app-common-auto-complete-input>
+        </ng-container>
+        <div *ngSwitchDefault>Not Available</div>
+    </ng-container>
+</ng-template>

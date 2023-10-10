@@ -1,0 +1,18 @@
+<span #dropdownContainer>
+    <span class="p-float-label">
+        <p-dropdown inputId="{{ property?.id }}" [(ngModel)]="value" (onChange)="onChange($event)"
+            [disabled]="property?.disabled" styleClass="w-full" [class.ng-invalid]="property?.invalid"
+            [class.ng-valid]="!property?.invalid" [class.ng-dirty]="property?.invalid" [ngClass]="property?.classNames"
+            [ngStyle]="property?.style" [autoDisplayFirst]="false" [options]="property.options"
+            [optionLabel]="property?.optionTypeStr?null:'label'" [optionValue]="property?.optionTypeStr?null:'value'"
+            [showClear]="true" [filter]="property.options.length > 5" [appendTo]="dropdownContainer">
+        </p-dropdown>
+        <label *ngIf="property?.label" for="{{ property?.id }}" [class.text-red-500]="property?.invalid"
+            [class.font-bold]="property?.invalid">
+            {{ property?.label
+            }}<sup *ngIf="property?.required" class="text-red-500 font-bold">
+                *</sup></label>
+    </span>
+    <small *ngIf="property?.invalid && property?.invalidMessage" id="{{ property?.id }}-help" class="text-red-500">{{
+        property?.invalidMessage }}</small>
+</span>
