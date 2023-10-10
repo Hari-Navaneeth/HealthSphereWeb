@@ -1,10 +1,7 @@
-import { createServer } from "http";
-import { Server } from "node-static";
-
+import express from "express";
+const app = express();
 const PORT = 80;
-const fileServer = new Server("./public");
-createServer((req, res) => {
-  fileServer.serve(req, res);
-  console.log("Server requested from", new Date());
-}).listen(PORT);
-console.log("Server started");
+
+app.use("/*", express.static("public"));
+
+app.listen(PORT, () => console.log(`web app listening on port ${PORT}!`));
