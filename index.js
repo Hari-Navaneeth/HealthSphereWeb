@@ -1,11 +1,10 @@
-var http = require('http');
+import { createServer } from "http";
+import { Server } from "node-static";
 
-var nStatic = require('node-static');
-
-var fileServer = new nStatic.Server('./public');
-
-http.createServer(function (req, res) {
-    
-    fileServer.serve(req, res);
-
-}).listen(5000);
+const PORT = 80;
+const fileServer = new Server("./public");
+createServer((req, res) => {
+  fileServer.serve(req, res);
+  console.log("Server requested from", new Date());
+}).listen(PORT);
+console.log("Server started");
